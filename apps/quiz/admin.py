@@ -1,4 +1,4 @@
-from .models import QuizCategory, Quiz, Answer, QuizTaker
+from .models import QuizCategory, Quiz, QuizQuestion, Answer, QuizTaker
 from django.contrib import admin
 
 
@@ -15,6 +15,14 @@ class QuizAdmin(admin.ModelAdmin):
     list_display_links = ('id', 'title')
     list_filter = ('title','soha',)
     search_fields = ('title', 'description')
+    list_per_page = 25
+
+
+class QuizquestionAdmin(admin.ModelAdmin):
+    list_display = ('id', 'quiz', 'question',)
+    list_display_links = ('id', 'quiz')
+    list_filter = ('quiz',)
+    search_fields = ('quiz', 'question',)
     list_per_page = 25
 
 
@@ -35,7 +43,9 @@ class QuizTakerAdmin(admin.ModelAdmin):
 
 
 
+
 admin.site.register(QuizCategory, QuizCategoryAdmin)
 admin.site.register(QuizTaker, QuizTakerAdmin)
+admin.site.register(QuizQuestion, QuizquestionAdmin)
 admin.site.register(Answer, AnswerAdmin)
 admin.site.register(Quiz, QuizAdmin)
