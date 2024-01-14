@@ -3,10 +3,16 @@ from utils.swagger import schema_view
 from django.urls import path, include
 from django.contrib import admin
 from django.conf import settings
+from django.shortcuts import render
+
+def admin_page(request):
+    return render(request, 'home.html')
+
 
 urlpatterns = [
     # path('rosetta/', include('rosetta.urls')),
-    path('admin-p/', admin.site.urls),
+    path('', admin_page, name="home"),
+    path('admin-p/', admin.site.urls, name="admin_page"),
 ]
 
 urlpatterns += [

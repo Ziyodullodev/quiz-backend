@@ -74,3 +74,4 @@ class UpdateAPIView(APIView):
                 "errors": serializer.errors,
             }, status=status.HTTP_400_BAD_REQUEST
         )
+    
