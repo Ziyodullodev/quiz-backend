@@ -5,9 +5,9 @@ schema_view = get_schema_view(
     openapi.Info(
         title="Snippets API",
         default_version='v1',
-        description="biz-bor.uz backend swagger",
-        terms_of_service="https://bizda-bor.uz",
-        contact=openapi.Contact(email="uzbizdabor@gmail.com"),
+        description="QUiz backend swagger",
+        terms_of_service="https://www.google.com/policies/terms/",
+        contact=openapi.Contact(email="testmail@gmail.com"),
         license=openapi.License(name="MIT License"),
     ),
     public=True,

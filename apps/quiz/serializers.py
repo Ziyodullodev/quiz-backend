@@ -3,29 +3,24 @@ from .models import QuizCategory, Quiz, Answer, QuizTaker
 
 
 class QuizCategorySerializer(ModelSerializer):
-    model = QuizCategory
-
     class Meta:
+        model = QuizCategory
         fields = '__all__'
 
-    
 
 class QuizSerializer(ModelSerializer):
-    model = Quiz
-
     class Meta:
+        model = Quiz
         fields = '__all__'
 
 
 class AnswerSerializer(ModelSerializer):
-    model = Answer
-
     class Meta:
+        model = Answer
         fields = '__all__'
 
 
 class QuizTakerSerializer(ModelSerializer):
-    model = QuizTaker
-
     class Meta:
+        model = QuizTaker
         fields = '__all__'

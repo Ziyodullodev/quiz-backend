@@ -1,5 +1,5 @@
 from rest_framework.generics import ListAPIView, ListCreateAPIView
-from pagination import MyPagination
+from .pagination import MyPagination
 
 class MyListAPIView(ListAPIView):
     def paginate_queryset(self, queryset):
