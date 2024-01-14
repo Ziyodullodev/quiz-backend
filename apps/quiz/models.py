@@ -22,13 +22,13 @@ class Quiz(models.Model):
     title = models.CharField(max_length=255, verbose_name=_("Savol sarlavhasi"))
     description = models.TextField(verbose_name=_("Savol haqida"))
     soha = models.ForeignKey(QuizCategory, on_delete=models.CASCADE, verbose_name=_("Soha"))
-    quiz_time = models.IntegerField(verbose_name=_("Test vaqti"))
+    quiz_time = models.IntegerField(verbose_name=_("Test vaqti"), default=0)
     is_active = models.BooleanField(default=False, verbose_name=_("Faol"))
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Yaratilgan sana"))
     updated_at = models.DateTimeField(auto_now=True, verbose_name=_("Yangilangan sana"))
 
     def __str__(self):
-        return self.name
+        return self.title
 
     class Meta:
         verbose_name = _("Savol")
@@ -43,7 +43,7 @@ class Answer(models.Model):
     updated_at = models.DateTimeField(auto_now=True, verbose_name=_("Yangilangan sana"))
 
     def __str__(self):
-        return self.name
+        return self.text
 
     class Meta:
         verbose_name = _("Javob")
@@ -54,12 +54,13 @@ class QuizTaker(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_("Foydalanuvchi"))
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, verbose_name=_("Savol"))
     correct_answers = models.IntegerField(default=0, verbose_name=_("To'g'ri javoblar soni"))
+    mistakes = models.IntegerField(default=0, verbose_name=_("Xato javoblar soni"))
     completed = models.BooleanField(default=False, verbose_name=_("Yechildi"))
     start_timestamp = models.DateTimeField(auto_now_add=True, verbose_name=_("Boshlangan sana"))
     timestamp = models.DateTimeField(auto_now_add=True, verbose_name=_("Yechilgan sana"))
 
     def __str__(self):
-        return self.name
+        return self.user.username + ' - ' + self.quiz.title
 
     class Meta:
         verbose_name = _("Test oluvchi")
